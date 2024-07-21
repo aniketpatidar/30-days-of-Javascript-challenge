@@ -1,0 +1,96 @@
+<!-- Day 9: DOM Manipulation -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1 id="heading">DOM Manipulation</h1>
+    <p class="para-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque temporibus nesciunt, perspiciatis possimus animi necessitatibus porro, in nobis dicta odit saepe vero totam nemo maiores vel doloremque soluta quidem. Amet!</p>
+    <button id="btn">Change Paragraph text</button>
+    <button id="btn-reset">Reset</button>
+    <ul></ul>
+    <h2 id="greet">H2 hello</h2>
+    <img src="https://www.gravatar.com/avatar/00eb0dd8c3cd1298b05f09661f0c2b45?s=64&amp;d=identicon&amp;r=PG" alt="avatar" width="40" height="40" id="avtar">
+    <script>
+      // Tasks/Activities:
+
+      // Activity 1: Selecting and Manipulating Elements
+
+      // Task 1: Select an HTML element by its ID and change its text content.
+      let heading = document.getElementById("heading");
+      heading.innerHTML = 'DOM'
+
+      // Task 2: Select an HTML element by its class and change its background color.
+      let paragraph = document.getElementsByClassName("para-text");
+      for(let i=0; i<paragraph.length; i++){
+        paragraph[i].style.backgroundColor = "red";
+      }
+
+      // Activity 2: Creating and Appending Elements
+
+      // Task 3: Create a new div element with some text content and append it to the body.
+      let divElement = document.createElement("div");
+      divElement.appendChild(document.createTextNode("Some text"))
+      document.body.appendChild(divElement);
+
+      // Task 4: Create a new li element and add it to an existing ul list.
+      let liElement = document.createElement("li");
+      liElement.appendChild(document.createTextNode("li element first"));
+      document.querySelector("ul").appendChild(liElement);
+
+      // Activity 3: Removing Elements
+
+      // Task 5: Select an HTML element and remove it from the DOM.
+      let h2Elemnt = document.getElementById("greet");
+      h2Elemnt.remove();
+
+      // Task 6: Remove the last child of a specific HTML element.
+      let li2Element = document.createElement("li");
+      li2Element.appendChild(document.createTextNode("li2 element last"));
+      document.querySelector("ul").appendChild(li2Element);
+      document.querySelector("ul").lastChild.remove();
+
+      // Activity 4: Modifying Attributes and Classes
+
+      // Task 7: Select an HTML element and change one of its attributes (e.g., src of an img tag).
+      let img = document.getElementById("avtar");
+      img.setAttribute('src', "https://placehold.co/400")
+
+      // Task 8: Add and remove a CSS class to/from an HTML element.
+      img.classList.add('user-avtar')
+      img.classList.remove('user-avtar')
+
+      // Activity 5: Event Handling
+
+      // Task 9: Add a click event listener to a button that changes the text content of a paragraph.
+      let btn = document.getElementById("btn");
+      let btnReset = document.getElementById("btn-reset");
+      btn.addEventListener("click", function(){
+        for(i=0; i<paragraph.length; i++) {
+          paragraph[i].innerHTML = "Lorem Lorem Lorem"
+        }
+      });
+      btnReset.addEventListener("click", function(){
+        for(i=0; i<paragraph.length; i++) {
+          paragraph[i].innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque temporibus nesciunt, perspiciatis possimus animi necessitatibus porro, in nobis dicta odit saepe vero totam nemo maiores vel doloremque soluta quidem. Amet!"
+        }
+      })
+
+      // Task 10: Add a mouseover event listener to an element that changes its border color.
+      btn.addEventListener("mouseover", function(e){
+        e.target.style.borderColor = "red";
+      })
+      btn.addEventListener("mouseout", function(e){
+        e.target.style.borderColor = "";
+      })
+
+      // Feature Request:
+      // 1. Text Content Manipulation Script: Write a script that selects an HTML element by its ID and changes its text content.
+      // 2. Element Creation Script: Create a script that demonstrates creating a new div element and appending it to the body.
+      // 3. Element Removal Script: Write a script that selects an HTML element and removes it from the DOM.
+      // 4. Attribute Modification Script: Create a script that changes the attributes of an HTML element.
+    </script>
+</html>
